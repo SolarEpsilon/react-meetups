@@ -1,9 +1,14 @@
 import { useRef } from "react";
 
+// Card is what holds the elements of each meetup, like image and text:
 import Card from "../ui/Card";
+
+// Import CSS from our CSS file. "classes" is a JS object with the CSS classes as proprteries of it:
 import classes from "./NewMeetupForm.module.css";
 
+// Function that handles creating a new meetup:
 function NewMeetupForm(props) {
+  // Using React's "reference" concept, set the reference to the appropriate DOM elements to render the HTML. This is handled in AllMeetups.js:
   const titleInputRef = useRef();
   const imageInputRef = useRef();
   const addressInputRef = useRef();
@@ -17,6 +22,7 @@ function NewMeetupForm(props) {
     const enteredAddress = addressInputRef.current.value;
     const enteredDescription = descriptionInputRef.current.value;
 
+    // Assign data entered to the meetup being created:
     const meetupData = {
       title: enteredTitle,
       image: enteredImage,
@@ -24,9 +30,11 @@ function NewMeetupForm(props) {
       description: enteredDescription,
     };
 
+    // When user clicks button to add meetup, add the meetup data to the remote Firebase database:
     props.onAddMeetup(meetupData);
   }
 
+  // Return HTML of the new meetup:
   return (
     <Card>
       <form className={classes.form} onSubmit={submitHandler}>

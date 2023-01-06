@@ -1,8 +1,10 @@
 import { useHistory } from "react-router-dom";
 
+// Import function that handles creating new meetups:
 import NewMeetupForm from "../components/meetups/NewMeetupForm";
 
 function NewMeetupPage() {
+  // React's useHistory hook allows us to manipulate the browser history in the DOM:
   const history = useHistory();
 
   // Get meetup data and turn it into a string to upload it:

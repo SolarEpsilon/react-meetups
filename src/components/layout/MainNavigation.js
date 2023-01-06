@@ -1,11 +1,10 @@
 import { useContext } from "react";
-
 import { Link } from "react-router-dom";
-
+import FavoritesContext from "../../store/favorites-context";
 // Import CSS from our CSS file. "classes" is a JS object with the CSS classes as proprteries of it:
 import classes from "./MainNavigation.module.css";
-import FavoritesContext from "../../store/favorites-context";
 
+// Header/top bar navigation:
 function MainNavigation() {
   const favoritesCtx = useContext(FavoritesContext);
 

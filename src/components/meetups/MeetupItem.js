@@ -1,14 +1,18 @@
 import { useContext } from "react";
-
+// Card is what holds the elements of each meetup, like image and text:
 import Card from "../ui/Card";
+// Import CSS from our CSS file. "classes" is a JS object with the CSS classes as proprteries of it:
 import classes from "./MeetupItem.module.css";
+// FavoritesContext is meetups marked as favorites by the user:
 import FavoritesContext from "../../store/favorites-context";
 
+// MeetupItem renders each meetup, and checks if the meetup is favorited or not (if it is, it marks the meetup as favorited):
 function MeetupItem(props) {
   const favoritesCtx = useContext(FavoritesContext);
 
   const itemIsFavorite = favoritesCtx.itemIsFavorite(props.id);
 
+  // Toggle if a meetup is favorited or not:
   function toggleFavoriteStatusHandler() {
     if (itemIsFavorite) {
       favoritesCtx.removeFavorite(props.id);
@@ -23,6 +27,7 @@ function MeetupItem(props) {
     }
   }
 
+  // Render meetup:
   return (
     <li className={classes.item}>
       <Card>
